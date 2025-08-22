@@ -1,0 +1,21 @@
+.container {
+  --d: 6.5em; /* image size */
+  --rel: 1; /* how much extra space we want between images, 1 = 1 image size */
+  --ba: 1turn/var(--m);  /* base angle = 1 full turn divided by number of edges */
+  /* (1 + var(--rel))*var(--d) = polygon edge = img size + extra space */
+  --r: calc(.5*(1 + var(--rel))*var(--d)/tan(.5*var(--ba))); /* circle radius */
+  display: grid;
+  width: calc(2*var(--r) + var(--d)); /* container size */
+  background: silver
+}
+  
+.container a {
+  grid-area: 1/ 1;
+  place-self: center;
+  width: var(--d);
+  --ca: calc(var(--i) * var(--ba));
+  transform: 
+    rotate(var(--ca)) 
+    translate(var(--r))
+    rotate(calc(-1*var(--ca)))
+}
